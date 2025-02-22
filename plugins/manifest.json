@@ -4,7 +4,9 @@
   "version": "1.0",
   "description": "A simple extension to read and print the text content of a webpage to the console.",
   "permissions": [
-    "activeTab"
+"activeTab",
+    "scripting",
+    "storage"
   ],
   "background": {
     "service_worker": "background.js"
