@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "SafeSeek",
+  "version": "1.0",
+  "description": "A simple extension to read and print the text content of a webpage to the console.",
+  "permissions": [
+    "activeTab"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
+}
