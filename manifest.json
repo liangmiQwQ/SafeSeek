@@ -3,11 +3,7 @@
   "name": "SafeSeek",
   "version": "1.0",
   "description": "A simple extension to read and print the text content of a webpage to the console.",
-  "permissions": [
-"activeTab",
-    "scripting",
-    "storage"
-  ],
+  "permissions": ["activeTab", "scripting", "storage"],
   "background": {
     "service_worker": "background.js"
   },

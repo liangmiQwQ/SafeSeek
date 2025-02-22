@@ -1,15 +1,25 @@
+import copy from 'rollup-plugin-copy'
 import { defineConfig } from 'vite'
+
 import vue from '@vitejs/plugin-vue'
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [vue()],
-  /*build: {
+  build: {
     rollupOptions: {
-      input: {
-        popup: 'index.html',
-        manifest: 'manifest.json' // 将 manifest 文件打包
-      },
+      plugins: [
+        copy({
+          targets: [
+            {
+              src: 'manifest.json',
+              dest: './dist',
+            },
+            { src: 'icons/*.png', dest: 'dist/icons' },
+          ],
+          hook: 'writeBundle',
+        }),
+      ],
     },
-  },*/
+  },
 })
