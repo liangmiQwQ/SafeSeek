@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { SwitchRoot, SwitchThumb } from 'radix-vue'
 
-const value = defineModel()
+const value = defineModel<boolean>()
 
 const props = defineProps<{ item: string; defaultValue?: boolean }>()
 </script>
@@ -12,7 +12,7 @@ const props = defineProps<{ item: string; defaultValue?: boolean }>()
       {{ props.item }}
     </span>
     <SwitchRoot
-      v-model="value"
+      v-model:checked="value"
       :default-checked="props.defaultValue"
       class="relative flex h-[20px] w-[34px] cursor-default rounded-full bg-black/50 shadow-sm focus-within:outline focus-within:outline-black data-[state=checked]:bg-black"
     >
