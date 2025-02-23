@@ -4,14 +4,14 @@ import type { config } from '../type/config'
 
 import ConfigItem from './ConfigItem.vue'
 
-const chrome = {
+/*const chrome = {
   storage: {
     sync: {
       get: (_par1: any, _par2: (result: any) => void) => {},
       set: (_par1: any, _par2: (result: any) => void) => {},
     },
   },
-}
+}*/
 
 chrome.storage.sync.get('config', (result) => {
   if (result !== null && result !== undefined) {
