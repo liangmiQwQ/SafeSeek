@@ -4,7 +4,7 @@ import Title from './components/Title.vue'
 </script>
 
 <template>
-  <main class="h-96 w-96">
+  <main class="w-96 bg-emerald-100 py-8">
     <Title />
     <Config />
   </main>

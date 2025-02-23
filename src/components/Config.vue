@@ -1,24 +1,22 @@
 <script setup lang="ts">
-import { SwitchRoot, SwitchThumb } from 'radix-vue'
-import { ref } from 'vue'
-
-const switchState = ref(false)
+import ConfigItem from './ConfigItem.vue'
 </script>
 <template>
-  <div class="p-5">
-    <label
-      class="pr-[15px] text-[15px] leading-none select-none"
-      for="airplane-mode"
-    >
-      女子亻尔
-    </label>
-    <SwitchRoot
-      v-model:checked="switchState"
-      class="relative flex h-[25px] w-[42px] cursor-default rounded-full bg-black/50 shadow-sm focus-within:outline focus-within:outline-black data-[state=checked]:bg-black"
-    >
-      <SwitchThumb
-        class="my-auto block h-[21px] w-[21px] translate-x-0.5 rounded-full bg-white shadow-sm transition-transform duration-100 will-change-transform data-[state=checked]:translate-x-[19px]"
-      />
-    </SwitchRoot>
+  <div class="flex flex-col gap-2 p-5">
+    <span class="pl-3 text-sm text-gray-500">基础配置</span>
+    <div class="flex flex-wrap pb-2">
+      <ConfigItem item="阻止访问" />
+      <ConfigItem item="R1检查" :default-value="true" />
+    </div>
+
+    <span class="pl-3 text-sm text-gray-500">允许访问</span>
+    <div class="flex flex-wrap">
+      <ConfigItem item="暴力恐怖" :default-value="true" />
+      <ConfigItem item="成人内容" :default-value="true" />
+      <ConfigItem item="游戏内容" />
+      <ConfigItem item="娱乐八卦" />
+      <ConfigItem item="政治娱乐" />
+      <ConfigItem item="学习无关内容" />
+    </div>
   </div>
 </template>
