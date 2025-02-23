@@ -3,7 +3,7 @@ import { SwitchRoot, SwitchThumb } from 'radix-vue'
 
 const value = defineModel()
 
-const props = defineProps<{ item: String; defaultValue?: boolean }>()
+const props = defineProps<{ item: string; defaultValue?: boolean }>()
 </script>
 
 <template>
