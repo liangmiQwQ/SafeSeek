@@ -4,7 +4,20 @@ import type { config } from '../type/config'
 
 import ConfigItem from './ConfigItem.vue'
 
-let defaultConfig: config = {
+chrome.storage.sync.get('config', (result) => {
+  if (result !== null && result !== undefined) {
+    if (
+      result.config !== null &&
+      result.config !== undefined &&
+      result.config !== ''
+    ) {
+      config.basic = JSON.parse(result.config).basic
+      config.content = JSON.parse(result.config).content
+    }
+  }
+})
+
+const config = reactive<config>({
   basic: {
     block: false,
     isDeepSeekR1: true,
@@ -17,16 +30,12 @@ let defaultConfig: config = {
     politics: true,
     otherButStudy: true,
   },
-}
-
-if (localStorage.getItem('config') !== null) {
-  defaultConfig = JSON.parse(localStorage.getItem('config') as string)
-}
-
-const config = reactive(defaultConfig)
+})
 
 watch(config, (value) => {
-  localStorage.setItem('config', JSON.stringify(value))
+  chrome.storage.sync.set({ config: JSON.stringify(value) }, () => {
+    alert('设置完毕')
+  })
 })
 </script>
 <template>
