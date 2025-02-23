@@ -11,4 +11,5 @@ export type config = {
     politics: boolean
     otherButStudy: boolean
   }
+  apiKey: string
 }
