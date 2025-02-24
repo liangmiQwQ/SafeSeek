@@ -1,4 +1,8 @@
+let controller
+
 const createOverlay = () => {
+  if (document.getElementById('safeseek_overlay')) return // 防止重复创建
+
   // 创建遮罩层
   const overlay = document.createElement('div')
   overlay.id = 'safeseek_overlay'
@@ -96,7 +100,10 @@ function collectPageContent(config) {
     cannotVisit.push('No learning or entertainment content')
   }
 
+  controller = new AbortController()
+  const signal = controller.signal
   fetch('https://api.deepseek.com/chat/completions', {
+    signal,
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -210,3 +217,7 @@ function removeAfterJSON(str) {
   }
   return str
 }
+
+window.addEventListener('beforeunload', () => {
+  controller.abort()
+})

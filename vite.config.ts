@@ -8,6 +8,10 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   plugins: [vue(), tailwindcss()],
   build: {
+    terserOptions: {
+      compress: { drop_console: true }, // 移除console.log
+    },
+
     rollupOptions: {
       plugins: [
         copy({
